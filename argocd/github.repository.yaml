@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: github-tbnl-gitops
+type: Opaque
+stringData:
+  type: git
+  url: https://github.com/tbeijen/tbnl-gitops.git
