@@ -9,3 +9,14 @@ resources:
 - install.yaml
 - ingress.yaml
 - github.repository.yaml
+
+configMapGenerator:
+  - name: argocd-cmd-params-cm
+    behavior: merge
+    literals:
+      - server.insecure=true
+      - server.disable.auth=true
+  - name: argocd-cm
+    behavior: merge
+    literals:
+      - timeout.reconciliation=60s
