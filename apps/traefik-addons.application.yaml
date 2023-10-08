@@ -10,6 +10,9 @@ spec:
   source:
     path: applications/traefik-addons
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    kustomize:
+      commonAnnotations:
+        preview/domain: '{{nameNormalized}}.{{metadata.labels.preview/domain}}'
   syncPolicy:
     automated:
       prune: true

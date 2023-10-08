@@ -8,8 +8,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argocd
+    path: applications/argocd
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    kustomize:
+      commonAnnotations:
+        domain/internal: '{{metadata.annotations.domain/internal}}'
+        domain/external: '{{metadata.annotations.domain/external}}'
   syncPolicy:
     automated:
       prune: true
