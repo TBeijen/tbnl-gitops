@@ -13,6 +13,8 @@ spec:
     metadata:
       name: '{{application}}'
       namespace: argocd
+      annotations:
+        domain/internal: '{{metadata.annotations.domain/internal}}'
     spec:
       source:
         repoURL: https://github.com/tbeijen/tbnl-gitops.git
@@ -20,7 +22,7 @@ spec:
         targetRevision: main
         kustomize:
           commonAnnotations:
-            domain/internal: {{metadata.annotations.domain/internal}}
+            domain/internal: '{{metadata.annotations.domain/internal}}'
       destination:
         server: https://kubernetes.default.svc
         project: default
