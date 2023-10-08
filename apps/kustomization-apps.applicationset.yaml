@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: guestbook
+  name: app-of-apps-kustomization
   namespace: argocd
 spec:
   generators:
@@ -23,6 +23,6 @@ spec:
         kustomize:
           commonAnnotations:
             domain/internal: '{{metadata.annotations.domain/internal}}'
+      project: default
       destination:
         server: https://kubernetes.default.svc
-        project: default
