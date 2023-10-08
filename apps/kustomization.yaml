@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - argocd.application.yaml
-- traefik-addons.applications.yaml
+- traefik-addons.application.yaml
