@@ -2,21 +2,22 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- argocd.application.yaml
-- traefik-addons.application.yaml
+- kustomization-apps.applicationset.yaml
+# - argocd.application.yaml
+# - traefik-addons.application.yaml
 
 
-replacements:
-- source:
-    fieldPath: metadata.name
-    kind: Application
-    name: traefik-addons
-  targets:
-  - fieldPaths:
-    - spec.source.kustomize.commonAnnotations.originalName
-    options:
-      create: true
-    select:
-      kind: Application
-      name: traefik-addons
+# replacements:
+# - source:
+#     fieldPath: metadata.name
+#     kind: Application
+#     name: traefik-addons
+#   targets:
+#   - fieldPaths:
+#     - spec.source.kustomize.commonAnnotations.originalName
+#     options:
+#       create: true
+#     select:
+#       kind: Application
+#       name: traefik-addons
 

@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - application: argocd
+      - application: traefik-addons
+  template:
+    metadata:
+      name: '{{application}}'
+      namespace: argocd
+    spec:
+      source:
+        repoURL: https://github.com/tbeijen/tbnl-gitops.git
+        path: 'applications/{{application}}'
+        targetRevision: main
+        kustomize:
+          commonAnnotations:
+            variables/domain/internal: {{metadata.annotations.variables/domain/internal}}
+      destination:
+        server: https://kubernetes.default.svc
+        project: default
