@@ -1,0 +1,13 @@
+# This overlay exists to set the internal domain value to match the server/cluster name
+# This works for limited set of clusters, but will be hard to maintain quickly
+#
+# @TODO Investigate: Name argocd cluster according to server (cli possible?), 
+# then use cluster-generator to bootstrap cluster
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base/
+
+commonAnnotations:
+  domain/internal: prod-poc-1.internal.tbnl.nl
