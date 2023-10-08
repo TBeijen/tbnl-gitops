@@ -16,8 +16,8 @@ spec:
     targetRevision: main
     kustomize:
       commonAnnotations:
-        domain/internal: '{{metadata.annotations.domain/internal}}'
-        domain/external: '{{metadata.annotations.domain/external}}'
+        domain/external: tibobeijen.nl
+        domain/internal: __CLUSTER_NAME__.internal.tbnl.nl
   syncPolicy:
     automated:
       prune: true
