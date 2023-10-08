@@ -20,7 +20,7 @@ spec:
         targetRevision: main
         kustomize:
           commonAnnotations:
-            variables/domain/internal: {{metadata.annotations.variables/domain/internal}}
+            domain/internal: {{metadata.annotations.domain/internal}}
       destination:
         server: https://kubernetes.default.svc
         project: default

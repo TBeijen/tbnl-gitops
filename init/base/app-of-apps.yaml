@@ -4,7 +4,7 @@ metadata:
   name: app-of-apps
   namespace: argocd
   annotations:
-    variables/domain/internal: __CLUSTER_NAME__.internal.tbnl.nl
+    domain/internal: __CLUSTER_NAME__.internal.tbnl.nl
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -15,7 +15,7 @@ spec:
     targetRevision: main
     kustomize:
       commonAnnotations:
-        variables/domain/internal: __CLUSTER_NAME__.internal.tbnl.nl
+        domain/internal: __CLUSTER_NAME__.internal.tbnl.nl
   syncPolicy:
     automated:
       prune: true
