@@ -4,7 +4,8 @@ metadata:
   name: app-of-apps
   namespace: argocd
   annotations:
-    domain/external: tibobeijen.nl  
+    domain/external: tibobeijen.nl
+    domain/internal: __CLUSTER_NAME__.internal.tbnl.nl
 spec:
   destination:
     server: https://kubernetes.default.svc
