@@ -12,6 +12,9 @@ spec:
   source:
     path: applications/traefik-addons
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    kustomize:
+      commonAnnotations:
+        domain: 'foobar.internal.nl'
     # kustomize:
     #   patches:
     #   - patch: |-

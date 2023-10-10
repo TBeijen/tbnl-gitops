@@ -6,3 +6,17 @@ namespace: kube-system
 resources:
 - service.yaml
 - ingress.yaml
+
+replacements:
+- source:
+    fieldPath: metadata.annotations.domain
+    kind: Ingress
+    name: traefik-ingress
+  targets:
+  - fieldPaths:
+    - spec.rules.0.host
+    options:
+      create: true
+    select:
+      kind: Ingress
+      name: traefik-ingress
