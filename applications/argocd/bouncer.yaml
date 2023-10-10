@@ -49,15 +49,15 @@ spec:
             limits:
               memory: 50Mi
           command:
-            - bash
-            - -c
-            - >-
-              kubectl rollout restart deployment.apps/argocd-applicationset-controller &&
-              kubectl rollout restart deployment.apps/argocd-notifications-controller &&
-              kubectl rollout restart deployment.apps/argocd-redis &&
-              kubectl rollout restart deployment.apps/argocd-repo-server &&
-              kubectl rollout restart deployment.apps/argocd-server &&
-              kubectl rollout restart statefulset.apps/argocd-application-controller
+            - kubectl
+            - rollout
+            - restart
+            - deployment.apps/argocd-applicationset-controller
+            - deployment.apps/argocd-notifications-controller
+            - deployment.apps/argocd-redis
+            - deployment.apps/argocd-repo-server
+            - deployment.apps/argocd-server
+            - statefulset.apps/argocd-application-controller
           securityContext:
             runAsUser: 65534
             runAsNonRoot: true
