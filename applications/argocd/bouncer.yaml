@@ -1,0 +1,64 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: argocd-bouncer
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: argocd-bouncer
+rules:
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets"]
+    resourceNames: ["*"]
+    verbs: ["get", "patch", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-bouncer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argocd-bouncer
+subjects:
+  - kind: ServiceAccount
+    name: argocd-bouncer
+    namespace: argocd
+---
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: argocd-bouncer
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      serviceAccountName: argocd-bouncer
+      restartPolicy: OnFailure
+      containers:
+        - name: argocd-bouncer
+          image: rancher/kubectl:v1.20.15
+          resources:
+            requests:
+              cpu: 100m
+              memory: 50Mi
+            limits:
+              memory: 50Mi
+          command:
+            - bash
+            - -c
+            - >-
+              kubectl rollout restart deployment.apps/argocd-applicationset-controller &&
+              kubectl rollout restart deployment.apps/argocd-notifications-controller &&
+              kubectl rollout restart deployment.apps/argocd-redis &&
+              kubectl rollout restart deployment.apps/argocd-repo-server &&
+              kubectl rollout restart deployment.apps/argocd-server &&
+              kubectl rollout restart statefulset.apps/argocd-application-controller
+          securityContext:
+            runAsUser: 65534
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
