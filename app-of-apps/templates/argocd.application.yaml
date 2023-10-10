@@ -10,14 +10,14 @@ spec:
   source:
     path: applications/argocd
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
-    kustomize:
-      patches:
-      - patch: |-
-          - op: replace
-            path: "/spec/rules/0/host"
-            value: argocd.{{ .Values.clusterName }}.{{ .Values.internalDomain }}
-        target:
-          kind: Ingress
+    # kustomize:
+    #   patches:
+    #   - patch: |-
+    #       - op: replace
+    #         path: "/spec/rules/0/host"
+    #         value: argocd.{{ .Values.clusterName }}.{{ .Values.internalDomain }}
+    #     target:
+    #       kind: Ingress
   syncPolicy:
     automated:
       prune: true

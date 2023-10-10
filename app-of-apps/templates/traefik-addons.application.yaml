@@ -12,12 +12,12 @@ spec:
   source:
     path: applications/traefik-addons
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
-    kustomize:
-      patches:
-      - patch: |-
-          - op: replace
-            path: "/spec/rules/0/host"
-            value: traefik.{{ .Values.clusterName }}.{{ .Values.internalDomain }}
+    # kustomize:
+    #   patches:
+    #   - patch: |-
+    #       - op: replace
+    #         path: "/spec/rules/0/host"
+    #         value: traefik.{{ .Values.clusterName }}.{{ .Values.internalDomain }}
   syncPolicy:
     automated:
       prune: true
