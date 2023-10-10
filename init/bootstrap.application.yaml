@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: app-of-apps
+    repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    targetRevision: __TARGET_REVISION__
+    helm:
+      values: |
+        clusterName: __CLUSTER_NAME__
+        targetRevision: __TARGET_REVISION__
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

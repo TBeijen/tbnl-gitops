@@ -1,0 +1,10 @@
+# Name of the k3s cluster. 
+# Note: this is a not the actual name of the cluster within ArgoCD since it runs just a single server (default)
+# It will be propagated to apps and used e.g. in ingress host names
+clusterName: default
+
+# Domain used for internal ingress
+internalDomain: internal.tbnl.nl
+
+# GitOps revision to track
+targetRevision: main
