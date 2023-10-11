@@ -14,7 +14,12 @@ spec:
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
     kustomize:
       commonAnnotations:
-        domain: 'foobar.internal.nl'
+        parameters/domain-internal: "traefik.{{ .Values.clusterName }}.{{ .Values.internalDomain}}"
+    # Note:
+    # a kustomize block containing 'patches' seems not supported.
+    # Worse: It causes the parent app-of-apps to always get out-of-sync by rendering 
+    # this kustomization in the parent manifest actual state (probably a bug)
+    #
     # kustomize:
     #   patches:
     #   - patch: |-
@@ -24,6 +29,6 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      # selfHeal: true
+      selfHeal: true
 
 

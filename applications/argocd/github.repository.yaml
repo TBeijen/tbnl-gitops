@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Secret
 metadata:
+  name: github-tbnl-gitops
   labels:
     argocd.argoproj.io/secret-type: repository
-  name: github-tbnl-gitops
 type: Opaque
 stringData:
   type: git

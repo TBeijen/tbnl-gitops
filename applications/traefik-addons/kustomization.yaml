@@ -9,7 +9,7 @@ resources:
 
 replacements:
 - source:
-    fieldPath: metadata.annotations.domain
+    fieldPath: metadata.annotations.parameters/domain-internal
     kind: Ingress
     name: traefik-ingress
   targets:

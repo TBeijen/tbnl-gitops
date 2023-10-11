@@ -2,11 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-server-ingress
-  namespace: argocd
+  annotations:
+    parameters/domain-internal: 'argocd.placeholder-domain.internal'
 spec:
   ingressClassName: traefik
   rules:
-  - host: argocd.prod-poc-1.internal.tbnl.nl
+  - host: will-be-set-by-replacement-from-annotation
     http:
       paths:
       - path: /

@@ -21,3 +21,17 @@ configMapGenerator:
     behavior: merge
     literals: 
       - timeout.reconciliation=70s
+
+replacements:
+- source:
+    fieldPath: metadata.annotations.parameters/domain-internal
+    kind: Ingress
+    name: argocd-server-ingress
+  targets:
+  - fieldPaths:
+    - spec.rules.0.host
+    options:
+      create: true
+    select:
+      kind: Ingress
+      name: argocd-server-ingress

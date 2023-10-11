@@ -3,11 +3,12 @@ kind: Ingress
 metadata:
   name: traefik-ingress
   namespace: kube-system
+  annotations:
+    parameters/domain-internal: 'traefik.placeholder-domain.internal'
 spec:
   ingressClassName: traefik
   rules:
-  # @TODO this needs to be dynamic
-    - host: traefik.prod-poc-1.internal.tbnl.nl
+    - host: will-be-set-by-replacement-from-annotation
       http:
         paths:
           - path: /
