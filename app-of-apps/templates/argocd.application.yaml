@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -10,6 +12,7 @@ spec:
   source:
     path: applications/argocd
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    targetRevision: "{{ .Values.targetRevision }}"
     kustomize:
       commonAnnotations:
         parameters/domain-internal: "argocd.{{ .Values.clusterName }}.{{ .Values.internalDomain}}"
