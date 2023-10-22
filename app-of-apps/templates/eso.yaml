@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eso
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: applications/eso
+    repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    targetRevision: "{{ .Values.targetRevision }}"
+    helm: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
