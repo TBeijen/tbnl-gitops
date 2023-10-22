@@ -8,6 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: external-secrets
   project: default
   source:
     path: applications/eso
