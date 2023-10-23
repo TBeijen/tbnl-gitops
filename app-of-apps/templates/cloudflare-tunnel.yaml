@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudflare-tunnel
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  project: default
+  source:
+    path: applications/cloudflare-tunnel
+    repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    targetRevision: "{{ .Values.targetRevision }}"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
