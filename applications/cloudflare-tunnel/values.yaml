@@ -2,3 +2,7 @@ cloudflare-tunnel:
   cloudflare:
     tunnelName: manual-poc
     secretName: tunnel-credentials
+
+cloudflare:
+  tunnelName: manual-poc
+  secretName: tunnel-credentials
