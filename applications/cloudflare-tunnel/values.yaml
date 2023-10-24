@@ -14,6 +14,6 @@ externalSecrets:
   configurations:
     prod-poc-1:
       key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel/prod-poc-1
-      version: "5"
+      version: "1"
   # This defines which of the above configurations to use
   cluster: specifyThis
