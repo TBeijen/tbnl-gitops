@@ -5,3 +5,13 @@ cloudflare-tunnel:
     ingress:
     - hostname: podinfo.tbnl.nl
       service: http://podinfo.podinfo.svc:9898
+
+externalSecrets:
+  # Define ssm paths and versions to use for a given cluster
+  configurations:
+    prod-poc-1:
+      key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel
+      # key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel/prod-poc-1
+      version: "5"
+  # This defines which of the above configurations to use
+  cluster: specifyThis

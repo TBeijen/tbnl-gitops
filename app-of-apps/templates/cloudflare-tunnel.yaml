@@ -14,6 +14,10 @@ spec:
     path: applications/cloudflare-tunnel
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
     targetRevision: "{{ .Values.targetRevision }}"
+    helm:
+      valuesObject:
+        externalSecrets:
+          cluster: "{{ .Values.clusterName }}"
   syncPolicy:
     automated:
       prune: true
