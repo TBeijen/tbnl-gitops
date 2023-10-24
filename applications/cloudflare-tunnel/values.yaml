@@ -1,8 +1,4 @@
 cloudflare-tunnel:
   cloudflare:
-    tunnelName: manual-poc
+    tunnelName: prod-poc-1
     secretName: tunnel-credentials
-
-cloudflare:
-  tunnelName: manual-poc
-  secretName: tunnel-credentials
