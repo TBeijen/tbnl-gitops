@@ -2,3 +2,6 @@ cloudflare-tunnel:
   cloudflare:
     tunnelName: prod-poc-1
     secretName: tunnel-credentials
+    ingress:
+    - hostname: podinfo.tbnl.nl
+      service: http://podinfo.podinfo.svc:9898
