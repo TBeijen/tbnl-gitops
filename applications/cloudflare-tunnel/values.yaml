@@ -8,10 +8,12 @@ cloudflare-tunnel:
 
 externalSecrets:
   # Define ssm paths and versions to use for a given cluster
+  #
+  # Note: We can't just pass in the cluster name, since the actual version differs per cluster.
+  # Using this mapping forces us to give an existing cluster name, of which the exact path and version will follow.
   configurations:
     prod-poc-1:
-      key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel
-      # key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel/prod-poc-1
+      key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel/prod-poc-1
       version: "5"
   # This defines which of the above configurations to use
   cluster: specifyThis
