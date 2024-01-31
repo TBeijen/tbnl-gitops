@@ -1,6 +1,6 @@
 cloudflare-tunnel:
   cloudflare:
-    tunnelName: prod-poc-1
+    tunnelName: <<specifyThis>>
     secretName: tunnel-credentials
     ingress:
     - hostname: podinfo.tbnl.nl
@@ -12,8 +12,17 @@ externalSecrets:
   # Note: We can't just pass in the cluster name, since the actual version differs per cluster.
   # Using this mapping forces us to give an existing cluster name, of which the exact path and version will follow.
   configurations:
-    prod-poc-1:
-      key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel/prod-poc-1
+    dev-blue:
+      key: /tbnl-tf/dev/cluster-secret/cloudflare-tunnel/dev-blue
+      version: "1"
+    dev-green:
+      key: /tbnl-tf/dev/cluster-secret/cloudflare-tunnel/dev-green
+      version: "1"
+    prod-blue:
+      key: /tbnl-tf/dev/cluster-secret/cloudflare-tunnel/prod-blue
+      version: "1"
+    prod-green:
+      key: /tbnl-tf/dev/cluster-secret/cloudflare-tunnel/prod-green
       version: "1"
   # This defines which of the above configurations to use
-  cluster: specifyThis
+  cluster: <<specifyThis>>

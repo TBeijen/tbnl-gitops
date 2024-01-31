@@ -16,6 +16,9 @@ spec:
     targetRevision: "{{ .Values.targetRevision }}"
     helm:
       valuesObject:
+        cloudflare-tunnel:
+          cloudflare:
+            tunnelName: tbnl-{{ .Values.clusterName }}
         externalSecrets:
           cluster: "{{ .Values.clusterName }}"
   syncPolicy:
