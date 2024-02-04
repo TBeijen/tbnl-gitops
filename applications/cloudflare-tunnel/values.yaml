@@ -19,10 +19,10 @@ externalSecrets:
       key: /tbnl-tf/dev/cluster-secret/cloudflare-tunnel/dev-green
       version: "1"
     prod-blue:
-      key: /tbnl-tf/dev/cluster-secret/cloudflare-tunnel/prod-blue
+      key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel/prod-blue
       version: "1"
     prod-green:
-      key: /tbnl-tf/dev/cluster-secret/cloudflare-tunnel/prod-green
+      key: /tbnl-tf/prod/cluster-secret/cloudflare-tunnel/prod-green
       version: "1"
   # This defines which of the above configurations to use
   cluster: <<specifyThis>>

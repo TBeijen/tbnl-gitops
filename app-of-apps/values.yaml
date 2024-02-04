@@ -1,7 +1,11 @@
+# Environment, used in ssm paths etc.
+# dev|prod
+environment: <<specifyEnvironment>>
+
 # Name of the k3s cluster. 
-# Note: this is a not the actual name of the cluster within ArgoCD since it runs just a single server (default)
+# Note: this is a not the actual name of the cluster within ArgoCD since it runs just a single server (name=default)
 # It will be propagated to apps and used e.g. in ingress host names
-clusterName: default
+clusterName: <<specifyClusterName>>
 
 # Domain used for internal ingress
 internalDomain: internal.tbnl.nl

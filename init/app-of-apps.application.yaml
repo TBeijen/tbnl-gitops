@@ -13,6 +13,7 @@ spec:
     targetRevision: __TARGET_REVISION__
     helm:
       values: |
+        environment: __ENVIRONMENT__
         clusterName: __CLUSTER_NAME__
         targetRevision: __TARGET_REVISION__
   syncPolicy:

@@ -1,1 +1,7 @@
+# Subchart config
 external-secrets: {}
+
+# Add-ons config
+externalSecrets:
+  environment: <<specifyEnvironment>>
+  cluster: <<specifyCluster>>

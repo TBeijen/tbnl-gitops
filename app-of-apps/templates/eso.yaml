@@ -14,6 +14,11 @@ spec:
     path: applications/eso
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
     targetRevision: "{{ .Values.targetRevision }}"
+    helm:
+      valuesObject:
+        externalSecrets:
+          environment: "{{ .Values.environment }}"
+          cluster: "{{ .Values.clusterName }}"
   syncPolicy:
     automated:
       prune: true
