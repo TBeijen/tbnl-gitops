@@ -16,6 +16,7 @@ spec:
         environment: __ENVIRONMENT__
         clusterName: __CLUSTER_NAME__
         targetRevision: __TARGET_REVISION__
+        externalDomain: __EXTERNAL_DOMAIN__
   syncPolicy:
     automated:
       prune: true

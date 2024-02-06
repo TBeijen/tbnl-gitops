@@ -10,5 +10,8 @@ clusterName: <<specifyClusterName>>
 # Domain used for internal ingress
 internalDomain: internal.tbnl.nl
 
+# Domain used for externel (cloudflare tunnel)
+externalDomain: <<specifyExternalDomain>>
+
 # GitOps revision to track
 targetRevision: main
