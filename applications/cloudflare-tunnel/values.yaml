@@ -2,9 +2,6 @@ cloudflare-tunnel:
   cloudflare:
     tunnelName: <<specifyThis>>
     secretName: tunnel-credentials
-    ingress:
-    - hostname: podinfo.tbnl.nl
-      service: http://podinfo.podinfo.svc:9898
 
 externalSecrets:
   # Define ssm paths and versions to use for a given cluster

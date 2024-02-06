@@ -1,0 +1,5 @@
+cloudflare-tunnel:
+  cloudflare:
+    ingress:
+    - hostname: podinfo.dev.tibobeijen.nl
+      service: http://podinfo.podinfo.svc:9898
