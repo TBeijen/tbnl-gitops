@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-k8s-monitoring
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: grafana
+  project: default
+  source:
+    path: applications/grafana-k8s-monitoring
+    repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    targetRevision: "{{ .Values.targetRevision }}"
+    helm:
+      # valueFiles:
+      # - values-dev.yaml
+      valuesObject:
+        externalSecrets:
+          environment: "{{ .Values.environment }}"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
