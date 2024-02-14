@@ -3,7 +3,7 @@ name: grafana-k8s-monitoring
 version: 0.0.1
 description: "Grafana K8S monitoring"
 
-# dependencies:
-#   - name: k8s-monitoring
-#     repository: https://grafana.github.io/helm-charts
-#     version: 0.10.1
+dependencies:
+  - name: k8s-monitoring
+    repository: https://grafana.github.io/helm-charts
+    version: 0.10.1
