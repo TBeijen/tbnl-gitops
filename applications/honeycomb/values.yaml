@@ -117,6 +117,9 @@ otel-collector:
     # enables the kubeletstatsreceiver and adds it to the metrics pipelines
     kubeletMetrics:
       enabled: true
+    # enable log collection, see https://docs.honeycomb.io/integrations/kubernetes/log-collection/
+    logsCollection:
+      enabled: true      
 
   config:
     receivers:
