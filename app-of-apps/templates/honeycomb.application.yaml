@@ -17,7 +17,7 @@ spec:
     helm:
       valuesObject:
         externalSecrets:
-          cluster: "{{ .Values.environment }}"
+          environment: "{{ .Values.environment }}"
   syncPolicy:
     automated:
       prune: true
