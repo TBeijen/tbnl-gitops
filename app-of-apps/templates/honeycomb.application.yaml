@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: honeycomb
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: honeycomb
+  project: default
+  source:
+    path: applications/honeycomb
+    repoURL: https://github.com/tbeijen/tbnl-gitops.git
+    targetRevision: "{{ .Values.targetRevision }}"
+    helm:
+      valuesObject:
+        externalSecrets:
+          cluster: "{{ .Values.environment }}"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -1,0 +1,14 @@
+apiVersion: v2
+name: honeycomb
+version: 0.0.1
+description: "Honeycomb otel collectors"
+
+dependencies:
+  - name: opentelemetry-collector
+    alias: otel-collector-cluster
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+    version: 0.81.1
+  - name: opentelemetry-collector
+    alias: otel-collector
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+    version: 0.81.1    
