@@ -56,14 +56,14 @@ otel-collector-cluster:
 
     exporters:
       otlp/k8s-metrics:
-        endpoint: "api.honeycomb.io:443" # US instance
-        #endpoint: "api.eu1.honeycomb.io:443" # EU instance
+        # endpoint: "api.honeycomb.io:443" # US instance
+        endpoint: "api.eu1.honeycomb.io:443" # EU instance
         headers:
           "x-honeycomb-team": "${env:HONEYCOMB_API_KEY}"
           "x-honeycomb-dataset": "k8s-metrics"
       otlp/k8s-events:
-        endpoint: "api.honeycomb.io:443" # US instance
-        #endpoint: "api.eu1.honeycomb.io:443" # EU instance
+        # endpoint: "api.honeycomb.io:443" # US instance
+        endpoint: "api.eu1.honeycomb.io:443" # EU instance
         headers:
           "x-honeycomb-team": "${env:HONEYCOMB_API_KEY}"
           "x-honeycomb-dataset": "k8s-events"
@@ -148,14 +148,14 @@ otel-collector:
         headers:
           "x-honeycomb-team": "${env:HONEYCOMB_API_KEY}"
       otlp/k8s-metrics:
-        endpoint: "api.honeycomb.io:443" # US instance
-        #endpoint: "api.eu1.honeycomb.io:443" # EU instance
+        # endpoint: "api.honeycomb.io:443" # US instance
+        endpoint: "api.eu1.honeycomb.io:443" # EU instance
         headers:
           "x-honeycomb-team": "${env:HONEYCOMB_API_KEY}"
           "x-honeycomb-dataset": "k8s-metrics"
       otlp/k8s-logs:
-        endpoint: "api.honeycomb.io:443" # US instance
-        #endpoint: "api.eu1.honeycomb.io:443" # EU instance
+        # endpoint: "api.honeycomb.io:443" # US instance
+        endpoint: "api.eu1.honeycomb.io:443" # EU instance
         headers:
           "x-honeycomb-team": "${env:HONEYCOMB_API_KEY}"
           "x-honeycomb-dataset": "k8s-logs"
