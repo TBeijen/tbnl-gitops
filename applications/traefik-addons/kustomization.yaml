@@ -4,8 +4,9 @@ kind: Kustomization
 namespace: kube-system
 
 resources:
-- service.yaml
+- helmchartconfig.yaml
 - ingress.yaml
+- service.yaml
 
 replacements:
 - source:
