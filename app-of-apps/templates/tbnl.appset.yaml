@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tbnl
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - stage: test
+      - stage: prod
+  template:
+    metadata:
+      name: "{{name}}-{{stage}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/tbeijen/tbnl-www-gitops.git
+        targetRevision: main
+        path: envs/{{`{{.Values.environment}}`}}-{{stage}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: www-{{stage}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
