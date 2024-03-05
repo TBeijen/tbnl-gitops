@@ -26,7 +26,9 @@ spec:
               service: http://tbnl-www.www-test.svc:80
             - hostname: www.{{ .Values.externalDomain }}
               service: http://tbnl-www.www-prod.svc:80
-            - service: http_status:404
+            # Despite https://github.com/cloudflare/argo-tunnel-examples/blob/master/named-tunnel-k8s/cloudflared.yaml
+            # below does not work
+            # - service: http_status:404
         externalSecrets:
           cluster: "{{ .Values.clusterName }}"
   syncPolicy:
