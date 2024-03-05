@@ -22,6 +22,11 @@ spec:
             ingress:
             - hostname: podinfo.{{ .Values.externalDomain }}
               service: http://podinfo.podinfo.svc:9898
+            - hostname: www-test.{{ .Values.externalDomain }}
+              service: http://tbnl-www.www-test.svc:http
+            - hostname: www.{{ .Values.externalDomain }}
+              service: http://tbnl-www.www-prod.svc:http
+            - service: http_status:404
         externalSecrets:
           cluster: "{{ .Values.clusterName }}"
   syncPolicy:
