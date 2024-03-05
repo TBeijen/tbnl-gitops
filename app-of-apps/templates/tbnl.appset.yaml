@@ -11,7 +11,7 @@ spec:
       - stage: prod
   template:
     metadata:
-      name: "{{name}}-{{stage}}"
+      name: tbnl-{{stage}}
     spec:
       project: default
       source:
