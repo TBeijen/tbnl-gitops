@@ -1,0 +1,9 @@
+apiVersion: v2
+name: newrelic
+version: 0.0.1
+description: "Setup New Relic"
+
+dependencies:
+  - name: nri-bundle
+    repository: https://helm-charts.newrelic.com
+    version: 5.0.65
