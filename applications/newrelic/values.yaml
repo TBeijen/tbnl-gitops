@@ -75,8 +75,8 @@ nri-bundle:
     config:
       kubernetes:
         integrations_filter:
-          app_values: ["cloudflared", "redis", "traefik", "calico", "nginx", "coredns", "kube-dns", "etcd", "cockroachdb", "velero", "harbor", "argocd"]
-    verboseLog: true
+          app_values: ["cloudflare-tunnel", "redis", "traefik", "calico", "nginx", "coredns", "kube-dns", "etcd", "cockroachdb", "velero", "harbor", "argocd"]
+    verboseLog: false
 
   newrelic-k8s-metrics-adapter:
     enabled: false
