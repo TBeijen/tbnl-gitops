@@ -72,7 +72,11 @@ nri-bundle:
 
   newrelic-prometheus-agent:
     enabled: true
-
+    config:
+      kubernetes:
+        integrations_filter:
+          app_values: ["cloudflared", "redis", "traefik", "calico", "nginx", "coredns", "kube-dns", "etcd", "cockroachdb", "velero", "harbor", "argocd"]
+  
   newrelic-k8s-metrics-adapter:
     enabled: false
 
