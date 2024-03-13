@@ -65,13 +65,13 @@ nri-bundle:
 
   pixie-chart:
     enabled: false
-    clusterName: tbnl-dev
+    clusterName: <<specify>>
 
   newrelic-infra-operator:
     enabled: false
 
   newrelic-prometheus-agent:
-    enabled: false
+    enabled: true
 
   newrelic-k8s-metrics-adapter:
     enabled: false
@@ -81,7 +81,7 @@ nri-bundle:
   # @default -- See [`values.yaml`](values.yaml)
   global:
     # -- The cluster name for the Kubernetes cluster.
-    cluster: tbnl-dev
+    cluster: <<specify>>
 
     lowDataMode: true
 

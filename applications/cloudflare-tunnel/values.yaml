@@ -1,7 +1,12 @@
 cloudflare-tunnel:
+  # https://github.com/cloudflare/helm-charts/blob/main/charts/cloudflare-tunnel/values.yaml
   cloudflare:
     tunnelName: <<specifyThis>>
     secretName: tunnel-credentials
+  podAnnotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: '/metrics'
+    prometheus.io/port: '2000'
 
 externalSecrets:
   # Define ssm paths and versions to use for a given cluster
