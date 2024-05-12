@@ -14,9 +14,13 @@ spec:
     helm:
       values: |
         environment: __ENVIRONMENT__
+        name: __NAME__
         clusterName: __CLUSTER_NAME__
         targetRevision: __TARGET_REVISION__
         externalDomain: __EXTERNAL_DOMAIN__
+      valueFiles:
+      - values-__ENVIRONMENT__.yaml
+      - values-__NAME__.yaml
   syncPolicy:
     automated:
       prune: true

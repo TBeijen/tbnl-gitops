@@ -1,17 +1,34 @@
+# Domain used for internal ingress
+internalDomain: internal.tbnl.nl
+
+# Domain used for external (cloudflare tunnel)
+externalDomain: <<specifyExternalDomain>>
+
+# GitOps revision to track
+#
+# Note: This is the revision set to all descending apps but does not affect the app-of-apps itself,
+# which will always track the branch it was bootstrapped with.
+targetRevision: main
+
 # Environment, used in ssm paths etc.
 # dev|prod
 environment: <<specifyEnvironment>>
 
+# Name
+# blue|green
+name: <<specifyName>>
+
 # Name of the k3s cluster. 
 # Note: this is a not the actual name of the cluster within ArgoCD since it runs just a single server (name=default)
 # It will be propagated to apps and used e.g. in ingress host names
+#
+# Note: We could construct this from environment+name, but since it is already defined
+# in Terraform code that sets up server and DNS, we stick to one source of truth.
 clusterName: <<specifyClusterName>>
 
-# Domain used for internal ingress
-internalDomain: internal.tbnl.nl
-
-# Domain used for externel (cloudflare tunnel)
-externalDomain: <<specifyExternalDomain>>
-
-# GitOps revision to track
-targetRevision: main
+# Control applications per environment/color
+apps:
+  honeycomb:
+    enabled: true
+  newrelic:
+    enabled: true

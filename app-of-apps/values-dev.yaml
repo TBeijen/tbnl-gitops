@@ -1,0 +1,3 @@
+apps:
+  honeycomb:
+    enabled: false
