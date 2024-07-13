@@ -6,4 +6,4 @@ description: "Setup New Relic"
 dependencies:
   - name: nri-bundle
     repository: https://helm-charts.newrelic.com
-    version: 5.0.65
+    version: 5.0.85

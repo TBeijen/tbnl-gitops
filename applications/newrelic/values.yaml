@@ -59,7 +59,6 @@ nri-bundle:
         cpu: 50m
         memory: 32Mi
 
-
   newrelic-pixie:
     enabled: false
 
