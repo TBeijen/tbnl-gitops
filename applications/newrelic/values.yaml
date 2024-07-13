@@ -51,6 +51,10 @@ nri-bundle:
   newrelic-logging:
     enabled: true
     lowDataMode: true
+    # See:
+    # - https://github.com/newrelic/helm-charts/blob/master/charts/newrelic-logging/values.yaml
+    # - https://github.com/newrelic/helm-charts/issues/1399
+    endpoint: https://log-api.eu.newrelic.com/log/v1
     resources:
       limits:
         cpu: 500m
