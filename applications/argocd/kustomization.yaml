@@ -10,8 +10,6 @@ resources:
 - ingress.yaml
 - github.repository.yaml
 - bouncer.yaml
-# https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.9/notifications_catalog/install.yaml
-- notifications-cm.yaml
 
 configMapGenerator:
   - name: argocd-cmd-params-cm
@@ -39,4 +37,7 @@ replacements:
       name: argocd-server-ingress
 
 patchesStrategicMerge:
+# First merging the notifications catalog 'as is', then merging the slack service on top
+# https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.9/notifications_catalog/install.yaml
+- notifications-cm.yaml
 - notifications-cm.patch.yaml
