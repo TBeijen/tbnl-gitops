@@ -10,6 +10,7 @@ resources:
 - ingress.yaml
 - github.repository.yaml
 - bouncer.yaml
+- https://github.com/argoproj/argo-cd//notifications_catalog/install.yaml?timeout=120&ref=v2.10.9
 
 configMapGenerator:
   - name: argocd-cmd-params-cm
