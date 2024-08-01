@@ -10,6 +10,7 @@ resources:
 - ingress.yaml
 - github.repository.yaml
 - bouncer.yaml
+- notifications.externalsecret.yaml
 
 configMapGenerator:
   - name: argocd-cmd-params-cm
@@ -35,6 +36,16 @@ replacements:
     select:
       kind: Ingress
       name: argocd-server-ingress
+
+patches:
+  # Hacky way to disable the default secret
+  - target:
+      kind: Secret
+      name: argocd-notifications-secret
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: argocd-notifications-secret-deactivated
 
 patchesStrategicMerge:
 # First merging the notifications catalog 'as is', then merging the slack service on top
