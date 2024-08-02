@@ -8,7 +8,11 @@ spec:
   - list:
       elements:
       - stage: test
+        annotations:
+          notifications.argoproj.io/subscribe.on-sync-succeeded.slack: notifications
       - stage: prod
+        annotations:
+          notifications.argoproj.io/subscribe.on-sync-succeeded.slack: notifications
   template:
     metadata:
       name: 'tbnl-{{`{{stage}}`}}'
@@ -27,3 +31,9 @@ spec:
           selfHeal: true
         syncOptions:
         - CreateNamespace=true
+  templatePatch: |
+    metadata:
+    {{- if .annotations }}    
+      annotations:
+        {{- .annotations | toYaml | nindent 8 }}
+    {{- end }}
