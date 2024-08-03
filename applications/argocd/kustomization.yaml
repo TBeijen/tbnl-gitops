@@ -48,7 +48,7 @@ patches:
         value: argocd-notifications-secret-deactivated
 
 patchesStrategicMerge:
-# First merging the notifications catalog 'as is', then merging the slack service on top
+# First merging the notifications catalog 'as is', then merging the slack service and trigger customizations on top
 # https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.9/notifications_catalog/install.yaml
 - notifications-cm.yaml
 - notifications-cm.patch.yaml
