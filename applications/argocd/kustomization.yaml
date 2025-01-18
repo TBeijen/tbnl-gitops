@@ -9,6 +9,7 @@ resources:
 - install.yaml
 - ingress.yaml
 - github.repository.yaml
+# See: https://github.com/argoproj/argo-cd/discussions/11082#discussioncomment-4173381
 - bouncer.yaml
 - notifications.externalsecret.yaml
 
