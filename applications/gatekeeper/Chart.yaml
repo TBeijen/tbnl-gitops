@@ -7,3 +7,6 @@ dependencies:
   - name: gatekeeper
     repository: https://open-policy-agent.github.io/gatekeeper/charts
     version: 3.18.2
+  - name: gatekeeper-policy-manager
+    repository: https://sighupio.github.io/gatekeeper-policy-manager
+    version: 0.13.0

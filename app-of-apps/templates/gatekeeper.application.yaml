@@ -15,7 +15,14 @@ spec:
     repoURL: https://github.com/tbeijen/tbnl-gitops.git
     targetRevision: "{{ .Values.targetRevision }}"
     helm:
-      valuesObject: {}
+      valuesObject:
+        gatekeeper-policy-manager:
+          ingress:
+            enabled: true
+            hosts:
+            - host: "gpm.{{ .Values.clusterName }}.{{ .Values.internalDomain}}"
+              paths:
+              - "/"
   syncPolicy:
     automated:
       prune: true
