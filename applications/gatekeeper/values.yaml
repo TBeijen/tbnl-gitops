@@ -1,6 +1,12 @@
+externalSecrets:
+  secretName: gpm
+  environment: <<specifyEnvironment>>
+
 # See: https://github.com/open-policy-agent/gatekeeper/blob/master/charts/gatekeeper/values.yaml
 gatekeeper:
   replicas: 2
 
 # See: https://github.com/sighupio/gatekeeper-policy-manager/blob/main/chart/values.yaml
-gatekeeper-policy-manager: {}
+gatekeeper-policy-manager:
+  config:
+    secretRef: gpm

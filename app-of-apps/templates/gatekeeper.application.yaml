@@ -16,11 +16,13 @@ spec:
     targetRevision: "{{ .Values.targetRevision }}"
     helm:
       valuesObject:
+        externalSecrets:
+          environment: "{{ .Values.environment }}"
         gatekeeper-policy-manager:
           ingress:
             enabled: true
             hosts:
-            - host: "gpm.{{ .Values.clusterName }}.{{ .Values.internalDomain}}"
+            - host: gpm.{{ .Values.clusterName }}.{{ .Values.internalDomain}}
               paths:
               - "/"
   syncPolicy:
