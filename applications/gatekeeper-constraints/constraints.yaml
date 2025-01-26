@@ -1,7 +1,11 @@
+# Goals:
+# - Identify containers that do not have a memory request (but might actually need a significant amount of memory)
+# - By setting memory request, have control over likelyhood of pod being evicted due to memory pressure
+# See: https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#pod-selection-for-kubelet-eviction
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sRequiredResources
 metadata:
-  name: container-must-have-memory-limit
+  name: container-must-have-memory-request
 spec:
   enforcementAction: warn
   match:
@@ -9,5 +13,5 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
   parameters:
-    limits:
+    requests:
       - memory
