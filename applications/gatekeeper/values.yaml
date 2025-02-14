@@ -5,6 +5,20 @@ externalSecrets:
 # See: https://github.com/open-policy-agent/gatekeeper/blob/master/charts/gatekeeper/values.yaml
 gatekeeper:
   replicas: 2
+  controllerManager:
+    resources:
+      limits:
+        memory: 200Mi
+      requests:
+        cpu: 10m
+        memory: 50Mi
+  audit:
+    resources:
+      limits:
+        memory: 200Mi
+      requests:
+        cpu: 10m
+        memory: 50Mi
 
 # See: https://github.com/sighupio/gatekeeper-policy-manager/blob/main/chart/values.yaml
 gatekeeper-policy-manager:
