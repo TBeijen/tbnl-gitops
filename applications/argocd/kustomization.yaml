@@ -3,26 +3,26 @@ kind: Kustomization
 
 namespace: argocd
 
+# https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.9/manifests/install.yaml
+# See: https://github.com/argoproj/argo-cd/discussions/11082#discussioncomment-4173381
 resources:
 - namespace.yaml
-# https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.9/manifests/install.yaml
 - install.yaml
 - ingress.yaml
 - github.repository.yaml
-# See: https://github.com/argoproj/argo-cd/discussions/11082#discussioncomment-4173381
 - bouncer.yaml
 - notifications.externalsecret.yaml
 
 configMapGenerator:
-  - name: argocd-cmd-params-cm
-    behavior: merge
-    literals:
-      - server.insecure=true
-      - server.disable.auth=true
-  - name: argocd-cm
-    behavior: merge
-    literals: 
-      - timeout.reconciliation=70s
+- behavior: merge
+  literals:
+  - server.insecure=true
+  - server.disable.auth=true
+  name: argocd-cmd-params-cm
+  # - name: argocd-cm
+  #   behavior: merge
+  #   literals: 
+  #     - timeout.reconciliation=70s
 
 replacements:
 - source:
@@ -38,18 +38,21 @@ replacements:
       kind: Ingress
       name: argocd-server-ingress
 
-patches:
   # Hacky way to disable the default secret
-  - target:
-      kind: Secret
-      name: argocd-notifications-secret
-    patch: |-
-      - op: replace
-        path: /metadata/name
-        value: argocd-notifications-secret-deactivated
+patches:
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: argocd-notifications-secret-deactivated
+  target:
+    kind: Secret
+    name: argocd-notifications-secret
 
-patchesStrategicMerge:
 # First merging the notifications catalog 'as is', then merging the slack service and trigger customizations on top
 # https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.9/notifications_catalog/install.yaml
+# Re-enabling health of applications, to allow sync-waves at the application level
+# https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed
+patchesStrategicMerge:
 - notifications-cm.yaml
 - notifications-cm.patch.yaml
+- cm.yaml
