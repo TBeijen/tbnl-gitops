@@ -48,11 +48,12 @@ patches:
     kind: Secret
     name: argocd-notifications-secret
 
+patchesStrategicMerge:
 # First merging the notifications catalog 'as is', then merging the slack service and trigger customizations on top
 # https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.9/notifications_catalog/install.yaml
-# Re-enabling health of applications, to allow sync-waves at the application level
-# https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed
-patchesStrategicMerge:
 - notifications-cm.yaml
 - notifications-cm.patch.yaml
+# Re-enabling health of applications, to allow sync-waves at the application level
+# https://github.com/argoproj/argo-cd/discussions/19712#discussioncomment-10672476
+# https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed
 - cm.yaml
