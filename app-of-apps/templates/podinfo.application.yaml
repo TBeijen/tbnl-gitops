@@ -16,6 +16,8 @@ spec:
     targetRevision: "6.5.2"
     helm:
       valuesObject:
+        ui:
+          color: "{{ .Values.name }}"
         ingress:
           enabled: true
           className: traefik

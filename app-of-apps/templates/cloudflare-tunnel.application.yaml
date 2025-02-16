@@ -22,6 +22,8 @@ spec:
             ingress:
             - hostname: podinfo.{{ .Values.externalDomain }}
               service: http://podinfo.podinfo.svc:9898
+            - hostname: podinfo-{{ .Values.name }}.{{ .Values.externalDomain }}
+              service: http://podinfo.podinfo.svc:9898
             - hostname: www-test.{{ .Values.externalDomain }}
               service: http://tbnl-www.www-test.svc:80
             - hostname: www.{{ .Values.externalDomain }}
