@@ -17,7 +17,7 @@ spec:
     helm:
       valuesObject:
         ui:
-          color: "{{ .Values.name }}"
+          message: "Podinfo name={{ .Values.name }}, env={{ .Values.environment }}, targetRevision={{ .Values.targetRevision }}"
         ingress:
           enabled: true
           className: traefik
